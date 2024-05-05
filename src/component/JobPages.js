@@ -1,7 +1,7 @@
-import './App.css';
+
 import {useEffect, useState} from 'react';
-import JobPages from './component/JobPages';
-function App() {
+import JobCard from './JobCard';
+function JobPages() {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -35,12 +35,21 @@ function App() {
   useEffect(()=> {
     console.log('huii');
     getData();
-  },[])
+  },[]);
+
   return (
     <div className="App">
-      <JobPages />
+        <div>
+            dfx
+            {
+                jobs.map((job,id)=> {
+                    console.log(job);
+                    return <JobCard jobid = {job.jdUid}/>
+                })
+            }
+        </div>
     </div>
   );
 }
 
-export default App;
+export default JobPages;
