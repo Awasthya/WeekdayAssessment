@@ -1,6 +1,7 @@
 import './App.css';
 import {useEffect, useState} from 'react';
 import JobPages from './component/JobPages';
+import Filter from './component/Filter';
 function App() {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -38,6 +39,7 @@ function App() {
   },[])
   return (
     <div className="App">
+      <Filter />
       <JobPages />
     </div>
   );
