@@ -66,3 +66,23 @@
     color: black;
     margin: 0px;
 }
+.content{
+    top: 20%;
+    left: 50%;
+    width: 30%;
+    right: 'auto';
+    bottom: 'auto';
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .closeBtn{
+    margin-left: 95%;
+  }
+.showMoreBtn{
+    background: rgba(255, 255, 255, 0.1);
+  color: rgb(53, 53, 213);
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  text-align: center;
+  backdrop-filter: blur(100px);
+  }
