@@ -1,6 +1,7 @@
 
 import {useEffect, useState} from 'react';
 import JobCard from './JobCard';
+import './JobStyle.css'
 function JobPages() {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -39,12 +40,12 @@ function JobPages() {
 
   return (
     <div className="App">
-        <div>
-            dfx
+        <div class='cardOuter'>
             {
                 jobs.map((job,id)=> {
-                    console.log(job);
-                    return <JobCard jobid = {job.jdUid}/>
+                    return <JobCard jobid = {job.jdUid} jobLogo= {job.logoUrl} companyName = {job.companyName} jobRole = {job.jobRole}
+                    location = {job.location} maxSalary = {job.maxJdSalary} minSalary= {job.minJdSalary} minExp = {job.minExp}
+                    jobDesc = {job.jobDetailsFromCompany}/>
                 })
             }
         </div>
