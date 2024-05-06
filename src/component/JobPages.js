@@ -2,7 +2,8 @@
 import {useEffect, useState} from 'react';
 import JobCard from './JobCard';
 import './JobStyle.css'
-function JobPages() {
+function JobPages(props) {
+    const propsJob = props.jobs;
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -34,6 +35,11 @@ function JobPages() {
   }
 
   useEffect(()=> {
+    if(propsJob != []){
+        setJobs(propsJob);
+    }
+  },[propsJob])
+  useEffect(()=> {
     console.log('huii');
     getData();
   },[]);
@@ -42,7 +48,7 @@ function JobPages() {
     <div className="App">
         <div class='cardOuter'>
             {
-                jobs.map((job,id)=> {
+                jobs?.map((job,id)=> {
                     return <JobCard jobid = {job.jdUid} jobLogo= {job.logoUrl} companyName = {job.companyName} jobRole = {job.jobRole}
                     location = {job.location} maxSalary = {job.maxJdSalary} minSalary= {job.minJdSalary} minExp = {job.minExp}
                     jobDesc = {job.jobDetailsFromCompany}/>

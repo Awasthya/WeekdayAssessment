@@ -1,6 +1,5 @@
 import './App.css';
 import {useEffect, useState} from 'react';
-import JobPages from './component/JobPages';
 import Filter from './component/Filter';
 function App() {
   const myHeaders = new Headers();
@@ -20,27 +19,22 @@ function App() {
   const getData = async() => {
     try{
       const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
-      console.log(response)
     const totalJobs = await response.json();
-    console.log(totalJobs)
     if (response.status !== 200) {
       
       const error = new Error(response.error);
       throw error;
     }
-    console.log(totalJobs.jdList)
-    setJobs(totalJobs.jdList);
+    await setJobs(totalJobs.jdList);
     }catch(error)  {console.error(error)};
   }
 
   useEffect(()=> {
-    console.log('huii');
     getData();
   },[])
   return (
     <div className="App">
-      <Filter />
-      <JobPages />
+      <Filter jobs= {jobs}/>
     </div>
   );
 }
